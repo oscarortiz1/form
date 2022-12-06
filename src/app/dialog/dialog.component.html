@@ -1,0 +1,27 @@
+<div class="content">
+  <h3>Información guardada:</h3>
+
+  <strong> Nombre:</strong>
+  <span>{{ data.name }}</span>
+
+  <div class="down"  *ngIf="data.lastName">
+    <strong> Apellido:</strong>
+    <span>{{ data.lastName }}</span>
+  </div>
+
+  <strong> Documento:</strong>
+  <span>{{ data.document }}</span>
+
+  <strong> Correo:</strong>
+  <span>{{ data.email }}</span>
+
+  <strong> Genero:</strong>
+  <span>{{ data.gender }}</span>
+
+  <div class="down" *ngIf="data.gender === 'Masculino'">
+    <strong> Edad:</strong>
+    <span>{{ data.age }}</span>
+  </div>
+  <strong> Pasatiempo:</strong>
+  <span>{{ data.hobby }}</span>
+</div>

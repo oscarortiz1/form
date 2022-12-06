@@ -1,0 +1,110 @@
+<div class="form">
+  <h1>Formulario de registro</h1>
+  <p><strong>Completa los campos:</strong></p>
+  <form  (ngSubmit)="onSubmit()" [formGroup]="user">
+    <table class="example-full-width">
+      <tr>
+        <td>
+          <label>
+            <span>Nombre</span>
+          </label>
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              formControlName="name"
+              placeholder="Nombre*"
+            />
+            <mat-error> Nombre Valido es <strong>requerido</strong> </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <label>
+            <span>Apellido</span>
+          </label>
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              formControlName="lastName"
+              placeholder="Apellido"
+            />
+            <mat-error>
+              Apellido Valido es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <label>
+      <span>Documento</span>
+    </label>
+    <mat-form-field>
+      <input
+        type="number"
+        matInput
+        formControlName="document"
+        placeholder="Documento*"
+      />
+      <mat-error> Documento Valido es <strong>requerido</strong> </mat-error>
+    </mat-form-field>
+
+    <label>
+      <span>Correo</span>
+    </label>
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="Email*"
+      />
+      <mat-error> Correo Valido es <strong>requerido</strong> </mat-error>
+    </mat-form-field>
+
+    <label>
+      <span>Genero</span>
+    </label>
+    <mat-form-field appearance="fill">
+      <mat-select placeholder="Genero*" formControlName="gender" (valueChange)="onchangeGender()">
+        <mat-option *ngFor="let item of gender" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+      <mat-error> Genero Valido es <strong>requerido</strong> </mat-error>
+    </mat-form-field>
+
+    <div *ngIf="user.value.gender === 'Masculino'">
+      <label>
+        <span>Edad</span>
+      </label>
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          formControlName="age"
+          placeholder="Edad"
+        />
+        <mat-error> Edad Valida es <strong>requerida</strong> </mat-error>
+      </mat-form-field>
+    </div>
+
+    <label>
+      <span>Pasatiempo</span>
+    </label>
+    <mat-radio-group
+      aria-label="Select an option"
+      matInput
+      formControlName="hobby"
+    >
+      <mat-radio-button value="Leer">Leer</mat-radio-button>
+      <mat-radio-button value="Caminar">Caminar</mat-radio-button>
+      <mat-radio-button value="Dormir">Dormir</mat-radio-button>
+      <mat-error *ngIf="user.value.hobby === '' && validate">
+        Por favor ingrese un Pasatiempo
+      </mat-error>
+    </mat-radio-group>
+
+    <button type="submit">Sign up</button>
+  </form>
+</div>

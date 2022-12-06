@@ -1,0 +1,9 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+span,
+.down {
+  margin-bottom: 1rem;
+}
